@@ -3,12 +3,16 @@ const App = {
     return {
       title: 'Список заметок',
       myPlaceholder: 'Введите текст',
-      inputValue: 'aaa'
+      inputValue: 'aaa',
+      notes: ['Заметка 1', 'Заметка 2']
     }
   },
   methods: {
     inputChangeHandler(event) {
       this.inputValue = event.target.value
+    },
+    addNewNote() {
+      this.notes.push(this.inputValue)
     }
   }
 }
