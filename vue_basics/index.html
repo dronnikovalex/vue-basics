@@ -17,6 +17,7 @@
                 v-bind:placeholder="myPlaceholder" 
                 v-bind:value="inputValue"
                 v-on:input="inputChangeHandler"
+                v-on:keypress.enter="addNewNote"
           >
         </div>
         <h2>inputValue: {{ inputValue }}</h2>
@@ -24,11 +25,14 @@
 
         <hr>
 
-        <ul class="list">
-          <li class="list-item" v-for="note of notes">
-            {{ note }}
+        <ul class="list" v-if="notes.length !== 0">
+          <li class="list-item" v-for="(note, idx) of notes">
+            {{ toUppercase(note) }}
+            <button class="btn danger" v-on:click="deleteNote(idx)">Удалить</button>
           </li>
         </ul>
+
+        <p v-else>Заметок пока нет</p>
 
     </div> 
   </div>
