@@ -8,10 +8,7 @@ const App = {
     }
   },
   methods: {
-    inputChangeHandler(event) {
-      this.inputValue = event.target.value
-      console.log(event.target.value)
-    },
+
     addNewNote() {
       if (this.inputValue !== '') {
         this.notes.push(this.inputValue)
@@ -24,6 +21,17 @@ const App = {
     deleteNote(idx) {
       console.log(idx)
       this.notes = this.notes.filter((_, i) => i !== idx)
+    }
+  },
+  computed: {
+    doubleCount() {
+      console.log('called')
+      return this.notes.length * 2
+    }
+  },
+  watch: {
+    inputValue(value) {
+      console.log('Input value change', value)
     }
   }
 }
